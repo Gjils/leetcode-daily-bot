@@ -13,7 +13,6 @@ const dailyText = `Сегодняшний дейлик: %v
 			
 %v`
 
-
 func Hanlde(update tgbotapi.Update) error {
 	if update.InlineQuery == nil {
 		return nil
