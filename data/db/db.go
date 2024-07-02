@@ -21,6 +21,7 @@ func getDB() *sql.DB {
 		fmt.Println("Database already exists.")
 	}
 
+	
 	db, err := sql.Open("sqlite3", dbName)
 	if err != nil {
 		log.Fatalf("Failed to open database: %v", err)
