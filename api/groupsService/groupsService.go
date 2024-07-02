@@ -43,9 +43,10 @@ func (service GroupsService) Add(id int) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println("Added", )
+	fmt.Println("Added", id)
 	return nil
 }
+
 
 func (service GroupsService) Check(id int) (bool, error) {
 	SQL := "SELECT identifier FROM groups WHERE identifier = ?"
