@@ -21,20 +21,17 @@ type GraphQLRequest struct {
  }
 
 func SendGraphQLRequest(url string, request GraphQLRequest) (*GraphQLResponse, error) {
-	// Сериализация запроса в JSON
 	requestBody, err := json.Marshal(request)
 	if err != nil {
 	 return nil, fmt.Errorf("failed to marshal request: %w", err)
 	}
  
-	// Создание HTTP-запроса
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestBody))
 	if err != nil {
 	 return nil, fmt.Errorf("failed to create HTTP request: %w", err)
 	}
 	req.Header.Set("Content-Type", "application/json")
  
-	// Отправка HTTP-запроса
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
@@ -42,13 +39,11 @@ func SendGraphQLRequest(url string, request GraphQLRequest) (*GraphQLResponse, e
 	}
 	defer resp.Body.Close()
  
-	// Чтение ответа
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 	 return nil, fmt.Errorf("failed to read response body: %w", err)
 	}
  
-	// Десериализация ответа
 	var response GraphQLResponse
 	if err := json.Unmarshal(body, &response); err != nil {
 	 return nil, fmt.Errorf("failed to unmarshal response: %w", err)
