@@ -8,6 +8,7 @@ import (
 
 var groupsService = groupsApi.GetApi()
 
+
 func Hanlde(update tgbotapi.Update) error {
 	chat := update.FromChat()
 	if chat == nil {
