@@ -33,7 +33,7 @@ func Start() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 
 	groupsService := groupsService.GetApi()
 	// c := cron.New()
@@ -41,6 +41,7 @@ func Start() {
 
 	c.Start()
 
+	
 	_, err = c.AddFunc("0 9 * * * ", func() {
 		idList, _ := groupsService.GetAll()
 		for _, elem := range idList {
