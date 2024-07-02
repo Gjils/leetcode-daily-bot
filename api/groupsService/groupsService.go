@@ -2,6 +2,7 @@ package groupsService
 
 import (
 	"database/sql"
+	"fmt"
 
 	dbLayer "leetcodebot/data/db"
 )
@@ -42,7 +43,7 @@ func (service GroupsService) Add(id int) error {
 	if err != nil {
 		return err
 	}
-
+	fmt.Println("Added", )
 	return nil
 }
 
@@ -57,6 +58,7 @@ func (service GroupsService) Check(id int) (bool, error) {
 	}
 	return true, nil
 }
+
 
 func (service GroupsService) Delete(id int) error {
 	SQL := "DELETE FROM groups WHERE identifier = ?"
