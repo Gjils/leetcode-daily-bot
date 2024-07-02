@@ -9,7 +9,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-const dbName = "db.db"
+const dbName = "database.db"
 
 func getDB() *sql.DB {
 	if _, err := os.Stat(dbName); os.IsNotExist(err) {

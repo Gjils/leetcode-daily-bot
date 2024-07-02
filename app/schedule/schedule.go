@@ -6,6 +6,7 @@ import (
 	"leetcodebot/api/groupsService"
 	"leetcodebot/api/leetcodeApi"
 	"log"
+	"time"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/robfig/cron/v3"
@@ -26,12 +27,18 @@ const eveningMessage = `
 `
 
 func Start() {
+	var err error
+
+	location, err := time.LoadLocation("Europe/Moscow")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	groupsService := groupsService.GetApi()
-	c := cron.New()
+	// c := cron.New()
+	c := cron.New(cron.WithLocation(location))
 
 	c.Start()
-
-	var err error
 
 	_, err = c.AddFunc("0 9 * * * ", func() {
 		idList, _ := groupsService.GetAll()
