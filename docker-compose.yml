@@ -20,6 +20,8 @@ services:
       dockerfile: ./Dockerfile
     networks:
       - network
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
     depends_on:
       - mongo
 networks:
