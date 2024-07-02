@@ -1,0 +1,27 @@
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    expose:
+      - "27017"
+    networks:
+      - network
+    volumes:
+      - ../leetcodebotdb:/data/db
+      - ./mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+  bot:
+    container_name: bot
+    build:
+      context: ./bot
+      dockerfile: ./Dockerfile
+    networks:
+      - network
+    depends_on:
+      - mongo
+networks:
+  network:
+    driver: bridge
