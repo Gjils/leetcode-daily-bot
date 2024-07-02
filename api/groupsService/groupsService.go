@@ -60,6 +60,7 @@ func (service GroupsService) Check(id int) (bool, error) {
 }
 
 
+
 func (service GroupsService) Delete(id int) error {
 	SQL := "DELETE FROM groups WHERE identifier = ?"
 	statement, err := service.db.Prepare(SQL)
