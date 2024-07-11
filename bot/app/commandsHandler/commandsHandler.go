@@ -21,6 +21,8 @@ func Hanlde(update tgbotapi.Update) error {
 	case "help": commands.Help()
 	case "daily": commands.Daily()
 	case "groups_list": commands.GroupsList()
+	case "leetcodeDailyInit": commands.Init()
+	case "leetcodeDailyStop": commands.Stop()
 	default: commands.Default()
 	}
 	return nil

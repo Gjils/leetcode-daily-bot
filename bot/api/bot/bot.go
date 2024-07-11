@@ -1,6 +1,7 @@
 package bot
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -13,8 +14,8 @@ func initBot() (*tgbotapi.BotAPI, tgbotapi.UpdatesChannel) {
 	if err := godotenv.Load(".local.env", ".env"); err != nil {
 		log.Print("No .env file found")	
 	}
-	
 	token, exists := os.LookupEnv("BOT_TOKEN")
+	fmt.Println(token, exists)
 	if !exists {
 		panic("token not found")
 	}
