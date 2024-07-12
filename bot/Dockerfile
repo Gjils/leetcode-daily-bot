@@ -14,7 +14,7 @@ RUN go mod download
 COPY . ./
 
 # Build
-RUN go build -o /docker-gs-ping
+RUN go build cmd/main.go
 
 # Optional:
 # To bind to a TCP port, runtime parameters must be supplied to the docker command.
@@ -24,4 +24,4 @@ RUN go build -o /docker-gs-ping
 # EXPOSE 8080
 
 # Run
-CMD ["/docker-gs-ping"]
+CMD ["./main"]
